@@ -1,27 +1,59 @@
 \documentclass[a4paper,10pt]{article}
-%\documentclass[a4paper,10pt]{scrartcl}
-
 \usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
+
+\usepackage{amsmath}    % need for subequations
+\usepackage{graphicx}   % need for figures
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color}      % use if color is used in text
+\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
 \usepackage{cancel} 
+\usepackage{titlesec}
 
-\title{HW\pound3-P1}
+\setlength{\parskip}{3pt plus 2pt}
+\setlength{\parindent}{20pt}
+
+\setlength{\oddsidemargin}{-0.6in}
+%\setlength{\evensidemargin}{0.5cm}
+%\setlength{\marginparsep}{0.75cm}
+%\setlength{\marginparwidth}{2.5cm}
+%\setlength{\marginparpush}{1.0cm}
+\setlength{\textwidth}{7.4in}
+%\headheight{1in}
+%\topmargin{0.5in}
+%\textheight{10.0in}
+%\footheight{0.1in} 
+
+
+% Colors
+\definecolor{headertextcolor}{rgb}{.88,.65,.11}
+\definecolor{headerboxcolor}{rgb}{.88,.65,.11}
+
+
+
+% Header style
+\titleformat{\section}{\color{headertextcolor}\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titleformat{\mbox}{\color{headertextcolor}}{}{}{}
+
+%opening
+\title{Maxwell Equations}
 \author{Christopher Stricklan}
-\date{02/13/2011}
+\date{February 21, 2011}
 
-\pdfinfo{%
-  /Title    (HW#3-P1)
-  /Author   (Christopher Stricklan)
-  /Creator  (Christopher Stricklan)
-  /Producer (Christopher Stricklan)
-  /Subject  (EE5390-FDTD)
-  /Keywords (FDTD)
-}
+
 
 \begin{document}
-%\maketitle
-\textbf{Maxwell's Equations}  
+
+\maketitle
+
+\begin{abstract}
+This document dervices the derivation of Maxwell's Equations from their Curl and Divergent forms to a final Finite Difference Form.  A Yee Grid is used to derive the Finite Difference Equations.
+\end{abstract}
+
+\vfill
+
+
+\section{Maxwell's Equations}
 
 \begin{equation}
   \nabla \cdot \vec{D}(t)=\rho_{v}(t)
@@ -38,9 +70,9 @@
 \begin{equation}
   \nabla \times \vec{H}(t) = \vec{J} + \frac{\partial\vec{D}(t)}{\partial t}
 \end{equation}
-                                                                                   
 
-\textbf{Constitutive relations}
+
+\section{Constitutive relations}
 \begin{equation}
   \label{eq:constitutive1}
   \vec{D} = [\epsilon(t)]*\vec{E}(t)
@@ -52,7 +84,7 @@
 \end{equation}
 
 
-\textbf{Eliminate Divergence}
+\section{Eliminate Divergence}
 
 Our use of the Yee Grid Scheme alows us to elimate divergence via equations \eqref{eq:Divergence1} and \eqref{eq:Divergence2}
 
@@ -75,7 +107,7 @@ This also allows for the centering of the fields invoked by the curl equations F
   \label{fig:YeeGridWithCurls}
 \end{figure}
 	
-\textbf{Substitution}
+\section{Substitution}
 
 Because we have satisfied the divergence equations by using the Yee Grid Scheme, we are now able to focus on the curl equations with our constituive relation equations \eqref{eq:constitutive1} and \eqref{eq:constitutive2} subsituted in.  We are also not injecting a Source.
 
@@ -94,7 +126,7 @@ Because we have satisfied the divergence equations by using the Yee Grid Scheme,
 \end{equation}
 
 
-\textbf{Normalize Magnetic Field}
+\section{Normalize Magnetic Field}
 
 The Electric and Magnetic Fields are three orders of magnitude different.  Rounding errors can propagate through our simulation, therefore we require that we normalize a Field.  In this case we are normalizing the Magnetic Field.
 
@@ -106,7 +138,7 @@ The Electric and Magnetic Fields are three orders of magnitude different.  Round
 \end{align}
 
 
-\textbf{Expand Curl Equations}
+\section{Expand Curl Equations}
 
 \begin{align}
   \nabla \times \vec{E} = -\frac{[\mu_r]}{c_0}\frac{\partial \vec{\tilde{H}}}{\partial t}
@@ -125,7 +157,7 @@ The Electric and Magnetic Fields are three orders of magnitude different.  Round
 \end{align}
 
 
-\textbf{Cross Out Diagonal Tensors}
+\section{Cross Out Diagonal Tensors}
 
 \begin{align}
   \nabla \times \vec{E} = -\frac{[\mu_r]}{c_0}\frac{\partial \vec{\tilde{H}}}{\partial t}
@@ -143,7 +175,7 @@ The Electric and Magnetic Fields are three orders of magnitude different.  Round
   \frac{\partial \tilde{H}_y}{\partial x} - \frac{\partial \tilde{H}_x}{\partial y} = \frac{1}{c_0}\left(\cancel{\epsilon_{zx} \frac{\partial E_x}{\partial t}} + \cancel{\epsilon_{zy} \frac{\partial E_y}{\partial t}} + \epsilon_{zz} \frac{\partial E_z}{\partial t}\right)\notag
 \end{align}
 
-\textbf{Final Analytical Equations}
+\section{Final Analytical Equations}
 
 These equations are our final Maxwell Equations that will be used to derive the Finite-Difference Equations for all dimensions.  We have one equation for each dimension for both the magentic and electric fields.  This gives a total of six equations that will need to be tracked.
 
@@ -175,7 +207,7 @@ Electric Field Equations
   \frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y} = -\frac{\mu_{zz}}{c_0}\frac{\partial\tilde{H}_z}{\partial t}
 \end{equation}
 
-\textbf{Finite-Difference Derived Equations}
+\section{Finite-Difference Derived Equations}
 
 Each equation needs to be derived based on the Yee Grid Model.  Remember that adjacent cells will need to be used to perform the calcuation of the individual finite-difference equations for Magnetic and Electric fields in each direction x,y,z
 
@@ -281,7 +313,7 @@ Ez - Figure \ref{fig:YeeGridEz} Equation \eqref{eq:YeeGridEz}
 \end{align}
 
 
-\textbf{Summary of Finite-Difference Equations}
+\section{Summary of Finite-Difference Equations}
 
 The six sets equations below are our Finite-Difference equations derived from Maxwell's Equations.  These equations we will use to derive equations for 1D, 2D, and 3D update equations for our FDTD algorithms.
 
@@ -337,188 +369,20 @@ The six sets equations below are our Finite-Difference equations derived from Ma
 
 
 
-\textbf{Reduce to One-Dimension}
-
-We will reduce our Finite-Difference Equations to 1D.  This means that we will have material that is uniform in two directions.  
-This uniform material will cause the fields to be uniform as well.  The change in material in our case we will define to be in the z-drection there for in the x anx y direction
-will be uniform.  This means that the directives in this direction will also equal zero.
-
-\begin{equation*}
- \frac{\partial}{\partial x} = \frac{\partial}{\partial y}=0
-\end{equation*}
-
-\begin{figure}[h]
-  \centering
-    \includegraphics[width=0.5\textwidth]{Slabs1D.png}
-  \caption{1D Problem}
-\end{figure}
-
-
-From our Finite-Difference equations we need to cancel out the x and y derivates that are zero.
-
-
-\begin{equation*}
-  \cancel{\frac{\partial E_z}{\partial y}} - \frac{\partial E_y}{\partial z} = -\frac{\mu_{xx}}{c_0}\frac{\partial\tilde{H}_x}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \frac{\partial E_x}{\partial z} - \cancel{\frac{\partial E_z}{\partial x}} = -\frac{\mu_{yy}}{c_0}\frac{\partial\tilde{H}_y}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \cancel{\frac{\partial E_y}{\partial x}} - \cancel{\frac{\partial E_x}{\partial y}} = -\frac{\mu_{zz}}{c_0}\frac{\partial\tilde{H}_z}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \cancel{\frac{\partial \tilde{H}_z}{\partial y}} - \frac{\partial \tilde{H}_y}{\partial z} = \frac{\epsilon_{xx}}{c_0}\frac{\partial E_x}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \frac{\partial \tilde{H}_x}{\partial z} - \cancel{\frac{\partial \tilde{H}_z}{\partial x}} = \frac{\epsilon_{yy}}{c_0}\frac{\partial E_y}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \cancel{\frac{\partial \tilde{H}_y}{\partial x}} - \cancel{\frac{\partial \tilde{H}_x}{\partial y}} = \frac{\epsilon_{zz}}{c_0}\frac{\partial E_z}{\partial t}
-\end{equation*}
-
-\[\longrightarrow\]
-
-\begin{equation*}
-  \cancel{\frac{E_{z}^{i,j+1,k}\mid_{t} - E_{z}^{i,j,k}\mid_{t}}{\Delta y}} - \frac{E_{y}^{i,j,k+1}\mid_{t} - E_{y}^{i,j,k}\mid_{t}}{\Delta z} = -\frac{\mu_{xx}^{i,j,k}}{c_0} \frac{\tilde{H}_{x}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{x}^{i,j,k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \frac{E_{x}^{i,j,k+1}\mid_{t} - E_{x}^{i,j,k}\mid_{t}}{\Delta z} - \cancel{\frac{E_{z}^{i+1,j,k}\mid_{t} - E_{z}^{i,j,k}\mid_{t}}{\Delta x}} = -\frac{\mu_{yy}^{i,j,k}}{c_0} \frac{\tilde{H}_{y}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{i,j,k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \cancel{\frac{E_{y}^{i+1,j,k}\mid_{t} - E_{y}^{i,j,k}\mid_{t}}{\Delta x}} - \cancel{\frac{E_{x}^{i,j+1,k}\mid_{t} - E_{x}^{i,j,k}\mid_{t}}{\Delta y}} = -\frac{\mu_{zz}^{i,j,k}}{c_0} \frac{\tilde{H}_{z}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{z}^{i,j,k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \cancel{\frac{\tilde{H}_{z}^{i,j,k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{z}^{i,j-1,k}\mid_{t+\frac  {\Delta t}{2}}}{\Delta y}} - \frac{\tilde{H}_{y}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{i,j,k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{xx}^{i,j,k}}{c_0} \frac{E_{x}^{i,j,k}\mid_{t+\Delta t} - E_{x}^{i,j,k}\mid_{t}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \frac{\tilde{H}_{x}^{i,j,k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{i,j,k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} - \cancel{\frac{\tilde{H}_{z}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{z}^{i-1,j,k}\mid_{t+\frac  {\Delta t}{2}}}{\Delta x}} = \frac{\epsilon_{yy}^{i,j,k}}{c_0} \frac{E_{y}^{i,j,k}\mid_{t+\Delta t} - E_{y}^{i,j,k}\mid_{t}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \cancel{\frac{\tilde{H}_{y}^{i,j,k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{y}^{i-1,j,k}\mid_{t+\frac  {\Delta t}{2}}}{\Delta x}} - \cancel{\frac{\tilde{H}_{x}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{x}^{i,j-1,k}\mid_{t+\frac  {\Delta t}{2}}}{\Delta y}} = \frac{\epsilon_{zz}^{i,j,k}}{c_0} \frac{E_{z}^{i,j,k}\mid_{t+\Delta t} - E_{z}^{i,j,k}\mid_{t}}{\Delta t}\notag
-\end{equation*}
-
-
-With these cross outs we come out with two observations.  The first is that the longitudinal field components Ez and Hz are always zero.  The second is that the Maxwell's equations have decoupled into two sets of two equations Ex/Hy Mode and Ey/Hx Mode.
-
-\begin{equation*}
-  - \frac{\partial E_y}{\partial z} = -\frac{\mu_{xx}}{c_0}\frac{\partial\tilde{H}_x}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \frac{\partial E_x}{\partial z} = -\frac{\mu_{yy}}{c_0}\frac{\partial\tilde{H}_y}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  0 = -\frac{\mu_{zz}}{c_0}\frac{\partial\tilde{H}_z}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  - \frac{\partial \tilde{H}_y}{\partial z} = \frac{\epsilon_{xx}}{c_0}\frac{\partial E_x}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  \frac{\partial \tilde{H}_x}{\partial z} = \frac{\epsilon_{yy}}{c_0}\frac{\partial E_y}{\partial t}
-\end{equation*}
-
-\begin{equation*}
-  0 = \frac{\epsilon_{zz}}{c_0}\frac{\partial E_z}{\partial t}
-\end{equation*}
-
-\[\longrightarrow\]
-
-\begin{equation*}
-  - \frac{E_{y}^{i,j,k+1}\mid_{t} - E_{y}^{i,j,k}\mid_{t}}{\Delta z} = -\frac{\mu_{xx}^{i,j,k}}{c_0} \frac{\tilde{H}_{x}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{x}^{i,j,k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \frac{E_{x}^{i,j,k+1}\mid_{t} - E_{x}^{i,j,k}\mid_{t}}{\Delta z} = -\frac{\mu_{yy}^{i,j,k}}{c_0} \frac{\tilde{H}_{y}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{i,j,k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \tilde{H}_{z}^{i,j,k} = 0\notag
-\end{equation*}
-
-\begin{equation*}
-  - \frac{\tilde{H}_{y}^{i,j,k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{i,j,k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{xx}^{i,j,k}}{c_0} \frac{E_{x}^{i,j,k}\mid_{t+\Delta t} - E_{x}^{i,j,k}\mid_{t}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  \frac{\tilde{H}_{x}^{i,j,k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{i,j,k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{yy}^{i,j,k}}{c_0} \frac{E_{y}^{i,j,k}\mid_{t+\Delta t} - E_{y}^{i,j,k}\mid_{t}}{\Delta t}\notag
-\end{equation*}
-
-\begin{equation*}
-  E_{z}^{i,j,k} = 0\notag
-\end{equation*}
-
-
-\textbf{Summary of 1D Finite-Difference Equations}
-
-The equations are now broken apart into their respective modes.  These modes are physical and propage independently from each other.  In the end though they are numerically the same and will exhibit the same electromagnetic behavior.   This allows us to only have to solve one set of two equations.  We can also note that since we only changing materials along the z axis we can drop the i and j Array Indices.
 
 
 
-Ex/Hy Mode
-\begin{equation}
-  - \frac{\tilde{H}_{y}^{k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{xx}^{k}}{c_0} \frac{E_{x}^{k}\mid_{t+\Delta t} - E_{x}^{k}\mid_{t}}{\Delta t}
-\end{equation}
-
-\begin{equation}
-  \frac{E_{x}^{k+1}\mid_{t} - E_{x}^{k}\mid_{t}}{\Delta z} = -\frac{\mu_{yy}^{k}}{c_0} \frac{\tilde{H}_{y}^{k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}
-\end{equation}
 
 
 
-Ey/Hx Mode
-\begin{equation}
-  \label{eq:EinEyHXMode}
-  \frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{yy}^{k}}{c_0} \frac{E_{y}^{k}\mid_{t+\Delta t} - E_{y}^{k}\mid_{t}}{\Delta t}
-\end{equation}
-
-\begin{equation}
-  \label{eq:HinEyHxMode}
-  \frac{E_{y}^{k+1}\mid_{t} - E_{y}^{k}\mid_{t}}{\Delta z} = \frac{\mu_{xx}^{k}}{c_0} \frac{\tilde{H}_{x}^{k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}
-\end{equation}
 
 
-\textbf{Update Equations}
-We are now going to derive the update equations used during in FDTD algorithm.  We have arbitrarily chosen to use Ey/Hx Mode found in Equations \eqref{eq:EinEyHXMode} and \eqref{eq:HinEyHxMode}
-
-Update Equation for Ey
-
-\begin{equation*}
-  \frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{yy}^{k}}{c_0} \frac{E_{y}^{k}\mid_{t+\Delta t} - E_{y}^{k}\mid_{t}}{\Delta t}
-\end{equation*}
-
-We want to solve for the E-Field at the future time value.
-
-\begin{equation*}
-  \frac{\epsilon_{yy}^{k}}{c_0} \frac{E_{y}^{k}\mid_{t+\Delta t} - E_{y}^{k}\mid_{t}}{\Delta t} = \frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}
-\end{equation*}
-
-\begin{equation*}
-  E_{y}^{k}\mid_{t+\Delta t} - E_{y}^{k}\mid_{t} = \frac{c_0\Delta t}{\epsilon_{yy}^{k}} \left(\frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}\right)
-\end{equation*}
-
-\begin{equation}
-  E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + \left(\frac{c_0\Delta t}{\epsilon_{yy}^{k}}\right) \left( \frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}\right)
-\end{equation}
 
 
-Update Equation for Hx
 
-\begin{equation*}
-  \frac{E_{y}^{k+1}\mid_{t} - E_{y}^{k}\mid_{t}}{\Delta z} = \frac{\mu_{xx}^{k}}{c_0} \frac{\tilde{H}_{x}^{k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}}}{\Delta t}
-\end{equation*}
+
+
+
 
 
 
@@ -535,4 +399,3 @@ Update Equation for Hx
 
 
 \end{document}
-
