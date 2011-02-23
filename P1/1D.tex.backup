@@ -9,7 +9,7 @@
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
 \usepackage{cancel} 
 \usepackage{titlesec}
-
+\usepackage{array} 	% use for creating arrays such as eqnarray
 \setlength{\parskip}{3pt plus 2pt}
 \setlength{\parindent}{20pt}
 
@@ -274,15 +274,75 @@ Since the update coefficients don't change during the simulation.  We can comput
 
 
 
+\section{Boundary Conditions}
+We have two types of boundary conditions that can be incorporated into this 1-Dimensional Simulation.  The Dirichlet and Perfectly Absorbing Boundary Conditions are methods that allow us to handle the fields that lie at the boundary of the model.  Specifically these points lie at $k = 0$ and $k = N_z+1$.  At these points there is no grid to pull our Electric and Magnetic fields from, therefore to maintain the stability of the Finite Difference Maxwell's Equations we must handle these seperatly.
+
+\textbf{Dirichlet Boundary Condition}
+This boundary condition is the easiest to implement.  We simply assume the fields that lie outside the grid are zero.  This is the most crude method and will cause reflection back into our model as energy reaches the boundary.
+
+
+\begin{eqnarray*}
+  \mbox{For } k < N_z & \tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} = \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}} + m_{H_x}^{k}\left(\frac{E_{y}^{k+1}\mid_{t} - E_{y}^{k}\mid_{t}}{\Delta z}\right) \\
+  \mbox{For } k = N_z & \tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} = \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}} + m_{H_x}^{k}\left(\frac{0 - E_{y}^{k}\mid_{t}}{\Delta z}\right)
+\end{eqnarray*}
 
 
 
+\begin{eqnarray*}
+  \mbox{For } k > 1 & E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + m_{E_y}^{k}\left(\frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}\right)\\
+  \mbox{For } k = 1 & E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + m_{E_y}^{k}\left(\frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - 0}{\Delta z}\right)
+\end{eqnarray*}
+
+\textbf{Periodic Boundary Condition}
+This boundary condition assumes that the device being modeled is periodic along a particular direction.  In our case the periodicity is along the z-axis. 
+
+\begin{eqnarray*}
+  \mbox{For } k < N_z & \tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} = \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}} + m_{H_x}^{k}\left(\frac{E_{y}^{k+1}\mid_{t} - E_{y}^{k}\mid_{t}}{\Delta z}\right)\\
+  \mbox{For } k = N_z & \tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} = \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}} + m_{H_x}^{k}\left(\frac{E_{y}^{1}\mid_{t} - E_{y}^{N_z}\mid_{t}}{\Delta z}\right)
+\end{eqnarray*}
+
+\begin{eqnarray*}
+  \mbox{For } k > 1 & E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + m_{E_y}^{k}\left(\frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}\right)\\
+  \mbox{For } k = 1 & E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + m_{E_y}^{k}\left(\frac{\tilde{H}_{x}^{1}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{N_z}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}\right)
+\end{eqnarray*}
 
 
+\textbf{Perfectly Absorbing Boundary Condition}
+The Perfectly Absorbing Boundary Condition provides a method to absorb almost all of the energy out of the model.  There is approximately 10 orders of magnitude less energy reflected back into the problem space.  This is very minor and should not affect our results.  There are three conditions though that must be met in order to use this boundary conditionl.
+\begin{itemize}
+\item Waves at the boundaries are only traveling outward.
+\item Materials at the boundaries are linear, homogeneous, isotropic and non-dispersive.
+\item Time step is chosen so physical waves travel 1 cell in two time steps $\Delta t=\frac{\Delta z}{2c_o}$
+\end{itemize}
 
+\begin{figure}[ht]
+  \label{fig:PerfectBoundary}
+   \centering
+     \includegraphics[width=0.75\textwidth]{PerfectBoundary.png}
+   \caption{Perfeect Boundary Time Steps}
+\end{figure}
 
+As can be seen in \ref{fig:PerfectBoundary} the last time step is magically off the grid.  In order to implement the perfect boundary condition we must use a field that would have propagated past our last grid cell $2\Delta t$ time steps ago.   In equations \eqref{eq:PerfectboundaryH} and \eqref{eq:PerfectboundaryE} the field value that exists outside our cells needs to be used when the wave reaches it at the $2\Delta t$ time frame
 
+\begin{equation}
+  \label{eq:PerfectboundaryH}
+  \tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} = \tilde{H}_{x}^{k}\mid_{t-\frac{\Delta t}{2}} + m_{H_x}^{k}\left(\frac{E_{y}^{N_z+1}\mid_{t} - E_{y}^{N_z}\mid_{t}}{\Delta z}\right)
+\end{equation}
 
+\begin{equation}
+  \label{eq:PerfectboundaryE}
+  E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + m_{E_y}^{k}\left(\frac{\tilde{H}_{x}^{1}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{0}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z}\right)
+\end{equation}
+
+Since the field values did exist $2\Delta t$ ago in our boundary cell in the problem space.  We can then infer the value is the same as the energy leaves the grid.
+
+\begin{equation*}
+  E_y^{N_z + 2}\mid_{t} = E_y^{N_z}\mid_{t-2\Delta t}
+\end{equation*}
+
+\begin{equation*}
+ \tilde{H}_{x}^{0}\mid_{t} = \tilde{H}_{x}^{1}\mid_{t-2\Delta t}
+\end{equation*}
 
 
 
