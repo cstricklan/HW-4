@@ -10,6 +10,9 @@
 \usepackage{cancel} 
 \usepackage{titlesec}
 \usepackage{array} 	% use for creating arrays such as eqnarray
+\usepackage{wrapfig}	% Allow wrapping of figures
+\usepackage{multirow}	% Multirow table
+
 \setlength{\parskip}{3pt plus 2pt}
 \setlength{\parindent}{20pt}
 
@@ -33,10 +36,11 @@
 
 % Header style
 \titleformat{\section}{\color{headertextcolor}\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\color{headertextcolor}\normalfont\normalsize\bfseries}{}{0em}{}[]
 \titleformat{\mbox}{\color{headertextcolor}}{}{}{}
 
 %opening
-\title{Maxwell Equations}
+\title{Modeling 1D Problems with FDTD}
 \author{Christopher Stricklan}
 \date{Revised: February 21, 2011}
 
@@ -184,7 +188,7 @@ The equations are now broken apart into their respective modes.  These modes are
 
 
 
-\textbf{Ex/Hy Mode}
+\subsection{Ex/Hy Mode}
 \begin{equation}
   - \frac{\tilde{H}_{y}^{k}\mid_{t+\frac  {\Delta t}{2}} - \tilde{H}_{y}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{xx}^{k}}{c_0} \frac{E_{x}^{k}\mid_{t+\Delta t} - E_{x}^{k}\mid_{t}}{\Delta t}
 \end{equation}
@@ -195,7 +199,7 @@ The equations are now broken apart into their respective modes.  These modes are
 
 
 
-\textbf{Ey/Hx Mode}
+\subsection{Ey/Hx Mode}
 \begin{equation}
   \label{eq:EinEyHXMode}
   \frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - \tilde{H}_{x}^{k-1}\mid_{t+\frac  {\Delta t}{2}}}{\Delta z} = \frac{\epsilon_{yy}^{k}}{c_0} \frac{E_{y}^{k}\mid_{t+\Delta t} - E_{y}^{k}\mid_{t}}{\Delta t}
@@ -277,7 +281,7 @@ Since the update coefficients don't change during the simulation.  We can comput
 \section{Boundary Conditions}
 We have two types of boundary conditions that can be incorporated into this 1-Dimensional Simulation.  The Dirichlet and Perfectly Absorbing Boundary Conditions are methods that allow us to handle the fields that lie at the boundary of the model.  Specifically these points lie at $k = 0$ and $k = N_z+1$.  At these points there is no grid to pull our Electric and Magnetic fields from, therefore to maintain the stability of the Finite Difference Maxwell's Equations we must handle these seperatly.
 
-\textbf{Dirichlet Boundary Condition}
+\subsection{Dirichlet Boundary Condition}
 This boundary condition is the easiest to implement.  We simply assume the fields that lie outside the grid are zero.  This is the most crude method and will cause reflection back into our model as energy reaches the boundary.
 
 
@@ -293,7 +297,7 @@ This boundary condition is the easiest to implement.  We simply assume the field
   \mbox{For } k = 1 & E_{y}^{k}\mid_{t+\Delta t} = E_{y}^{k}\mid_{t} + m_{E_y}^{k}\left(\frac{\tilde{H}_{x}^{k}\mid_{t+\frac{\Delta t}{2}} - 0}{\Delta z}\right)
 \end{eqnarray*}
 
-\textbf{Periodic Boundary Condition}
+\subsection{Periodic Boundary Condition}
 This boundary condition assumes that the device being modeled is periodic along a particular direction.  In our case the periodicity is along the z-axis. 
 
 \begin{eqnarray*}
@@ -307,7 +311,7 @@ This boundary condition assumes that the device being modeled is periodic along 
 \end{eqnarray*}
 
 
-\textbf{Perfectly Absorbing Boundary Condition}
+\subsection{Perfectly Absorbing Boundary Condition}
 The Perfectly Absorbing Boundary Condition provides a method to absorb almost all of the energy out of the model.  There is approximately 10 orders of magnitude less energy reflected back into the problem space.  This is very minor and should not affect our results.  There are three conditions though that must be met in order to use this boundary conditionl.
 \begin{itemize}
 \item Waves at the boundaries are only traveling outward.
@@ -365,4 +369,111 @@ To implement the boundary condition we keep track of previous history in variabl
 \end{equation*}
 
 
+\section{Sources}
+
+There are two ways to incorporate a source into our models, Hard Source and Soft Source.  The hard source is the simplest to implement.  After we have performed our update equations over the entire grid we overwrite some fields with our source.  This injects the source energy into our model.  This does cause a problem because the point where the source was inject behaves like a perfect electric or magnetic conductor to scattered fields.
+
+\begin{eqnarray*}
+ \tilde{H}_x^k\mid_{t+\frac{\Delta t}{2}} = g_{_H}\mid_{k} & E_y^k\mid_{t+\Delta t} = g_{_E}\mid_{k}
+\end{eqnarray*}
+
+The soft source on the otherhand is the best way to inject energy into our model.  After performing the udpate equations across the entire grid, the source is added to the current value of our source injection points.  This injects energy into the model, but allows scattered waves to pass through the source region like it was transparent.
+
+\begin{eqnarray*}
+ \tilde{H}_x^k\mid_{t+\frac{\Delta t}{2}} = \tilde{H}_x^k\mid_{t+\frac{\Delta t}{2}} + g_{_H}\mid_{k} & E_y^k\mid_{t+\Delta t} = E_y^k\mid_{t+\Delta t} + g_{_E}\mid_{k}
+\end{eqnarray*}
+
+\section{Model Parameters}
+
+\subsection{Grid Resolution}
+
+There are multiple considerations that need to be addressed in order to properly calculate the grid resolution.  
+
+\textbf{Wavelength}
+
+\begin{figure}[ht]
+   \centering
+     \includegraphics[width=0.5\textwidth]{Wavelength.png}
+   \caption{Building up wavelength resolution}
+\end{figure}
+%\begin{wrapfigure}{r}{40mm}
+%  \begin{center}
+%    \includegraphics{Wavelength.png}
+%  \end{center}
+%  \caption{Building of Wavelength}
+%\end{wrapfigure}
+
+
+The grid resolution must be sufficient to resolve the shortest wavelength.  First we must determine the smallest wavelength then we must devide this by a value that can be found in the chart.  These values are used as a guideline depending on the material with the highest refractive index.
+
+\begin{equation*}
+ \lambda_{min} = \frac{c_0}{f_{max}\eta_{max}}
+\end{equation*}
+
+\begin{eqnarray*}
+ \Delta_{\lambda} \approx \frac{\lambda_{min}}{N_{\lambda}} & N_{\lambda} \geq 10
+\end{eqnarray*}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|c|}{Approximate $N_\lambda$ Values} \\
+\hline
+$N_{\lambda}$ & Refractive Index & Comment\\ \hline
+\multirow{4}{*}{}
+  10 to 20 & $\eta=1-10$ & Low contrast dielectrics \\
+  10 to 30 & $\eta=10-30$ & High contrast dielectrics \\
+  40 to 60 & $\eta=40-60$ & Most metallic structures \\
+  100 to 200 & $\eta\geq60$ & Plasmonic devices \\
+\hline
+\end{tabular}
+
+\vfill
+\textbf{Mechanical Features}
+
+the grid resolution mst be sufficient to resolve the smallest physical feature of the device.  First, we must determine the smallest feature \ref{fig:diamondlattice} $d_{min}$.  then we must device this by 1 to 4 to accurately manage the width of our smallest feature.  
+\begin{figure}[ht]
+  \label{fig:diamondlattice}
+   \centering
+     \includegraphics[width=0.25\textwidth]{DiamondLattice.png}
+   \caption{}
+\end{figure}
+
+
+
+\begin{eqnarray*}
+ \Delta_d \approx \frac{d_{min}}{N_d} & N_d \geq 1
+\end{eqnarray*}
+
+\begin{figure}[ht]
+  \label{fig:diamondlatticebuildup}
+   \centering
+     \includegraphics[width=0.5\textwidth]{DiamondLatticeBuildup.png}
+   \caption{}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
+
+

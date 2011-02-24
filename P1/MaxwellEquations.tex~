@@ -38,12 +38,12 @@
 %opening
 \title{Maxwell Equations}
 \author{Christopher Stricklan}
-\date{Revised: February 21, 2011}
+\date{Revised: `February 21, 2011}
 
 
 
 \begin{document}
-
+`
 \maketitle
 
 \begin{abstract}

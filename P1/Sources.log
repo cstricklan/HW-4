@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.2.13)  24 FEB 2011 02:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.2.13)  24 FEB 2011 01:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**1D.tex
-(./1D.tex
+**Sources.tex
+(./Sources.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
@@ -301,128 +301,157 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip54
 \backup@length=\skip55
 )
-(/usr/share/texmf-texlive/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen126
-\WF@size=\dimen127
-\c@WF@wrappedlines=\count112
-\WF@box=\box29
-\WF@everypar=\toks30
-Package: wrapfig 2003/01/31  v 3.6
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count112
+\float@exts=\toks30
+\float@box=\box29
+\@float@everytoks=\toks31
+\@floatcapt=\box30
 )
-(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen128
-) (./1D.aux)
-\openout1 = `1D.aux'.
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count113
+\lst@gtempboxa=\box31
+\lst@token=\toks32
+\lst@length=\count114
+\lst@currlwidth=\dimen126
+\lst@column=\count115
+\lst@pos=\count116
+\lst@lostspace=\dimen127
+\lst@width=\dimen128
+\lst@newlines=\count117
+\lst@lineno=\count118
+\lst@maxwidth=\dimen129
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count119
+\lst@skipnumbers=\count120
+\lst@framebox=\box32
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+\@float@every@program=\toks33
+\c@program=\count121
+ (./Sources.aux)
+\openout1 = `Sources.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texmf/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
-\scratchdimen=\dimen129
-\scratchbox=\box30
-\nofMPsegments=\count114
-\nofMParguments=\count115
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count116
-\MPscratchDim=\dimen130
-\MPnumerator=\count117
-\everyMPtoPDFconversion=\toks32
+\scratchcounter=\count122
+\scratchdimen=\dimen130
+\scratchbox=\box33
+\nofMPsegments=\count123
+\nofMParguments=\count124
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen131
+\MPnumerator=\count126
+\everyMPtoPDFconversion=\toks35
 )
-Package hyperref Info: Link coloring OFF on input line 49.
+Package hyperref Info: Link coloring OFF on input line 54.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count118
+\c@section@level=\count127
 )
-LaTeX Info: Redefining \ref on input line 49.
-LaTeX Info: Redefining \pageref on input line 49.
- (./1D.out)
-(./1D.out)
+LaTeX Info: Redefining \ref on input line 54.
+LaTeX Info: Redefining \pageref on input line 54.
+ (./Sources.out)
+(./Sources.out)
 \@outlinefile=\write3
-\openout3 = `1D.out'.
+\openout3 = `Sources.out'.
 
-\AtBeginShipoutBox=\box31
- <Slabs1D.png, id=55, 794.97pt x 416.55624pt>
-File: Slabs1D.png Graphic file (type png)
- <use Slabs1D.png>
-[1
+\AtBeginShipoutBox=\box34
+\c@lstlisting=\count128
+ <GaussianPulse.png, id=11, 753.81625pt x 453.695pt>
+File: GaussianPulse.png Graphic file (type png)
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./Slabs1D.png (PNG cop
-y)>] [3] [4] [5] [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 317.
+<use GaussianPulse.png> [1
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.103 
+       <./GaussianPulse.png (PNG copy)>]
+<GaussianPulseDelay.png, id=37, 315.1775pt x 136.51pt>
+File: GaussianPulseDelay.png Graphic file (type png)
+
+<use GaussianPulseDelay.png>
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 130.
+
+(./code/GaussianSource.m
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 3.
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 317.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3.
+)
+Package hyperref Info: bookmark level for unknown program defaults to 0 on inpu
+t line 131.
 
-<PerfectBoundary.png, id=111, 843.15pt x 354.32375pt>
-File: PerfectBoundary.png Graphic file (type png)
+[3pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+has been already used, duplicate ignored
 
-<use PerfectBoundary.png> [7 <./PerfectBoundary.png (PNG copy)>]
-<Wavelength.png, id=123, 246.9225pt x 533.995pt>
-File: Wavelength.png Graphic file (type png)
- <use Wavelength.png>
-
-LaTeX Warning: Float too large for page by 4.25563pt on input line 398.
-
-[8] <DiamondLattice.png, id=129, 279.0425pt x 295.1025pt>
-File: DiamondLattice.png Graphic file (type png)
-
-<use DiamondLattice.png>
-<DiamondLatticeBuildup.png, id=130, 848.16875pt x 213.79875pt>
-File: DiamondLatticeBuildup.png Graphic file (type png)
-
-<use DiamondLatticeBuildup.png> [9] [10 <./Wavelength.png (PNG copy)>] [11 <./D
-iamondLattice.png (PNG copy)> <./DiamondLatticeBuildup.png (PNG copy)>]
-(./1D.aux) ) 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.142 \end{document}
+                     <./GaussianPulseDelay.png (PNG copy)>] (./Sources.aux) ) 
 Here is how much of TeX's memory you used:
- 5683 strings out of 493848
- 81317 string characters out of 1152823
- 186689 words of memory out of 3000000
- 8813 multiletter control sequences out of 15000+50000
- 9019 words of font info for 33 fonts, out of 3000000 for 9000
+ 7843 strings out of 493848
+ 108508 string characters out of 1152823
+ 231425 words of memory out of 3000000
+ 10971 multiletter control sequences out of 15000+50000
+ 9365 words of font info for 34 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,11n,33p,508b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on 1D.pdf (11 pages, 560800 bytes).
+ 38i,7n,40p,343b,1938s stack positions out of 5000i,500n,10000p,200000b,50000s
+</
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10
+.pfb>
+Output written on Sources.pdf (3 pages, 237300 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 PDF objects out of 1000 (max. 8388607)
+ 29 named destinations out of 1000 (max. 500000)
+ 27 words of extra memory for PDF output out of 10000 (max. 10000000)
 
