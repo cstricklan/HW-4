@@ -393,7 +393,7 @@ There are multiple considerations that need to be addressed in order to properly
 
 \begin{figure}[ht]
    \centering
-     \includegraphics[width=0.5\textwidth]{Wavelength.png}
+     \includegraphics[width=0.25\textwidth]{Wavelength.png}
    \caption{Building up wavelength resolution}
 \end{figure}
 %\begin{wrapfigure}{r}{40mm}
@@ -428,25 +428,98 @@ $N_{\lambda}$ & Refractive Index & Comment\\ \hline
 \end{tabular}
 
 \textbf{Mechanical Features}
-the grid resolution mst be sufficient to resolve the smallest physical feature of the device.  First, we must determine the smallest feature \ref{fig:diamondlattice}
 
-
+The grid resolution mst be sufficient to resolve the smallest physical feature of the device.  First, we must determine the smallest feature \ref{fig:diamondlattice} $d_{min}$.  then we must device this by 1 to 4 to accurately manage the width of our smallest feature.  
 \begin{figure}[ht]
   \label{fig:diamondlattice}
    \centering
-     \includegraphics[width=0.5\textwidth]{DiamondLattice.png}
+     \includegraphics[width=0.25\textwidth]{DiamondLattice.png}
    \caption{}
 \end{figure}
 
 
 
+\begin{eqnarray*}
+ \Delta_d \approx \frac{d_{min}}{N_d} & N_d \geq 1
+\end{eqnarray*}
+
+\begin{figure}[ht]
+  \label{fig:diamondlatticebuildup}
+   \centering
+     \includegraphics[width=0.5\textwidth]{DiamondLatticeBuildup.png}
+   \caption{}
+\end{figure}
+
+\textbf{Calculate Grid Resolution}
+
+We will first calculate an initial grid resolution by taking the minimum between the model feature $\Delta_d$ and wavelength $\Delta_\lambda$.
+
+\begin{equation*}
+   \Delta_x = \Delta_y = min[\Delta_\lambda,\Delta_d]
+\end{equation*}
 
 
 
+\begin{figure}[ht]
+  \label{fig:Gridxy}
+   \centering
+     \includegraphics[width=0.25\textwidth]{Gridxy.png}
+   \caption{Grid X/Y}
+\end{figure}
 
 
+Finally we need to ``Snap'' grid to critical dimensions.  In \ref{fig:Criticaldimension} we have modified delta to not fall halfway through a grid cell.  We can't fill half a cell in a discrete environment.  First we Decide what dimensions along each axis are critical.  $d_x$ and $d_y$.  We then compute how many grid cells comprise $d_c$ and round up \eqref{eq:GridCellsdc}.  Finally adjust grid resolution to fit this dimension in grid exactly \eqref{eq:FinalDxDy}.
 
 
+\begin{figure}[ht]
+  \label{fig:Criticaldimension}
+   \centering
+     \includegraphics[width=0.1\textwidth]{Criticaldimension.png}
+   \caption{Critical Dimension Expansion}
+\end{figure}
+
+
+\begin{align}
+ \label{eq:GridCellsdc}
+ M_x = ceil(\frac{d_x}{\Delta_x})\notag\\
+ M_y = ceil(\frac{d_y}{\Delta_y})
+\end{align}
+
+\begin{align}
+ \label{eq:FinalDxDy}
+ \Delta_x = \frac{d_x}{M_x}\notag\\
+ \Delta_y = \frac{d_y}{M_y}
+\end{align}
+
+
+\subsection{Courant Stability Condition}
+
+For each iteration of our update equations a currently existing electric field will not immediatly affect adjacent fields.  A disturbance in the electric field at one point will only be felt by the immediately adjacent magnetic fields.  For an adjancent electric field to feel the disturbance it takes at least two time steps.
+
+\begin{figure}[ht]
+   \centering
+     \includegraphics[width=0.75\textwidth]{felttimeline.png}
+   \caption{Timeline of electric field propation}
+\end{figure}
+
+Keeping in mind that Electromagnetic waves propagate at the speed of light in a vacuum.  Inside a material, a wave propagates at a reduce speed based on the refractive index \eqref{eq:wavevelocity}
+
+\begin{equation}
+ \label{eq:wavevelocity}
+ v = \frac{c_0}{\eta}
+\end{equation}
+
+Because we are dealing with a numerical algorithm it is not possible for a disturbance to travel farther than one unit cell in a single time step.  So we need to force a condition that would force a wave not to propage farther than a single unit cell in one time step.
+
+\begin{equation}
+ \frac{c_0 \Delta t}{\eta} < \Delta z
+\end{equation}
+
+So now we can place an upper limit on a time steps
+
+\begin{equation}
+ \Delta t < \frac{\eta \Delta z}{c_0}
+\end{equation}
 
 
 

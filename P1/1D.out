@@ -11,3 +11,5 @@
 \BOOKMARK [1][-]{section.6}{Sources}{}
 \BOOKMARK [1][-]{section.7}{Model Parameters}{}
 \BOOKMARK [2][-]{subsection.7.1}{Grid Resolution}{section.7}
+\BOOKMARK [2][-]{subsection.7.2}{Courant Stability Condition}{section.7}
+\BOOKMARK [1][-]{section.8}{FDTD Algorithm}{}

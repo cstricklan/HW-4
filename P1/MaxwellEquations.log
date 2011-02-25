@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.2.13)  22 FEB 2011 00:48
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.2.15)  25 FEB 2011 01:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,13 +6,7 @@ entering extended mode
 (./MaxwellEquations.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+yphenation, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size10.clo
@@ -126,7 +120,7 @@ File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count100
 ))
 \Gin@req@height=\dimen112
@@ -395,12 +389,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Ex.png (PNG copy)>] [10 <./YeeGridEy.png (PNG copy)> <./YeeGridEz.png (PNG copy
 )>] (./MaxwellEquations.aux) ) 
 Here is how much of TeX's memory you used:
- 5568 strings out of 493848
- 79792 string characters out of 1152823
- 190689 words of memory out of 3000000
- 8697 multiletter control sequences out of 15000+50000
+ 5565 strings out of 495061
+ 79739 string characters out of 1182621
+ 188954 words of memory out of 3000000
+ 8595 multiletter control sequences out of 15000+50000
  8711 words of font info for 32 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
+ 28 hyphenation exceptions out of 8191
  38i,19n,33p,384b,393s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsf
 onts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcs

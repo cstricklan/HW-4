@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.2.13)  24 FEB 2011 02:00
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.2.15)  25 FEB 2011 01:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,13 +6,7 @@ entering extended mode
 (./1D.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+yphenation, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size10.clo
@@ -126,7 +120,7 @@ File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
 \Gread@gobject=\count100
 ))
 \Gin@req@height=\dimen112
@@ -362,7 +356,7 @@ LaTeX Info: Redefining \pageref on input line 49.
 \openout3 = `1D.out'.
 
 \AtBeginShipoutBox=\box31
- <Slabs1D.png, id=55, 794.97pt x 416.55624pt>
+ <Slabs1D.png, id=63, 794.97pt x 416.55624pt>
 File: Slabs1D.png Graphic file (type png)
  <use Slabs1D.png>
 [1
@@ -377,52 +371,67 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 317.
 
-<PerfectBoundary.png, id=111, 843.15pt x 354.32375pt>
+<PerfectBoundary.png, id=119, 843.15pt x 354.32375pt>
 File: PerfectBoundary.png Graphic file (type png)
 
 <use PerfectBoundary.png> [7 <./PerfectBoundary.png (PNG copy)>]
-<Wavelength.png, id=123, 246.9225pt x 533.995pt>
+<Wavelength.png, id=131, 246.9225pt x 533.995pt>
 File: Wavelength.png Graphic file (type png)
- <use Wavelength.png>
-
-LaTeX Warning: Float too large for page by 4.25563pt on input line 398.
-
-[8] <DiamondLattice.png, id=129, 279.0425pt x 295.1025pt>
+ <use Wavelength.png> [8]
+<DiamondLattice.png, id=137, 279.0425pt x 295.1025pt>
 File: DiamondLattice.png Graphic file (type png)
-
-<use DiamondLattice.png>
-<DiamondLatticeBuildup.png, id=130, 848.16875pt x 213.79875pt>
+ <use DiamondLattice.png>
+<DiamondLatticeBuildup.png, id=138, 848.16875pt x 213.79875pt>
 File: DiamondLatticeBuildup.png Graphic file (type png)
 
-<use DiamondLatticeBuildup.png> [9] [10 <./Wavelength.png (PNG copy)>] [11 <./D
-iamondLattice.png (PNG copy)> <./DiamondLatticeBuildup.png (PNG copy)>]
-(./1D.aux) ) 
+<use DiamondLatticeBuildup.png> [9 <./Wavelength.png (PNG copy)>]
+<Gridxy.png, id=144, 282.05376pt x 439.6425pt>
+File: Gridxy.png Graphic file (type png)
+ <use Gridxy.png>
+<Criticaldimension.png, id=148, 200.75pt x 448.67625pt>
+File: Criticaldimension.png Graphic file (type png)
+
+<use Criticaldimension.png> <felttimeline.png, id=149, 833.1125pt x 232.87pt>
+File: felttimeline.png Graphic file (type png)
+
+<use felttimeline.png> [10 <./DiamondLattice.png (PNG copy)> <./DiamondLatticeB
+uildup.png (PNG copy)>]
+
+LaTeX Warning: Reference `eq:courantcondition' on page 11 undefined on input li
+ne 524.
+
+[11 <./Gridxy.png (PNG copy)> <./Criticaldimension.png (PNG copy)>] [12 <./felt
+timeline.png (PNG copy)>] (./1D.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5683 strings out of 493848
- 81317 string characters out of 1152823
- 186689 words of memory out of 3000000
- 8813 multiletter control sequences out of 15000+50000
+ 5713 strings out of 495061
+ 81792 string characters out of 1182621
+ 185323 words of memory out of 3000000
+ 8731 multiletter control sequences out of 15000+50000
  9019 words of font info for 33 fonts, out of 3000000 for 9000
- 714 hyphenation exceptions out of 8191
+ 28 hyphenation exceptions out of 8191
  38i,11n,33p,508b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on 1D.pdf (11 pages, 560800 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr
+9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/latxfont/line10.pfb>
+Output written on 1D.pdf (12 pages, 643008 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 239 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
